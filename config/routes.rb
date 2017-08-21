@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   root 'topics#index'
-  resources :topics, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :topics do
+    resources :comments
+    post :confirm, on: :collection
+  end
 
   devise_for :users, controllers: {
     registrations: "users/registrations",
