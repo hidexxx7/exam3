@@ -21,6 +21,7 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
+<% if @user.provider.blank? %>
   <div class="field"><!-- leave blank if you don't want to change it -->
     <%= f.label :パスワード %> <i>(変更したくない場合は空白のままにしてください)</i><br />
     <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "パスワード" %>
@@ -39,6 +40,13 @@
     <%= f.label :current_password %> <i>(変更を確認するために現在のパスワードが必要です)</i><br />
     <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "現在のパスワード"  %>
   </div><br><!-- we need your current password to confirm your changes -->
+<% end %>
+
+  <div class="field">
+    <%= profile_img(@user) if profile_img(@user) %>
+    <%= f.file_field :avatar %>
+    <%= f.hidden_field :avatar_cache %>
+  </div>
 
   <div class="actions">
     <%= f.submit "アカウントの更新", class: "btn btn-primary btn-block"  %>

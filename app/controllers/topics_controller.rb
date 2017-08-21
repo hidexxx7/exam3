@@ -4,6 +4,8 @@ class TopicsController < ApplicationController
 
   def index
     @topics = Topic.all
+    #binding.pry #ブレークポイントの作成
+    #raise #意図的なエラーの作成
   end
 
   def new

@@ -5,6 +5,7 @@
       <%= link_to "投稿する", new_topic_path, class: 'btn btn-default' %>
     <% @topics.each do |topic| %>
     <div class="row">
+      <h4><%= profile_img(topic.user) %>　投稿者：<%= topic.user.name %></h4>
       <h4><strong><%= topic.title %></strong></h4>
       <p><%= topic.content %></p>
       <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-default btn-sm btn-success' %>
