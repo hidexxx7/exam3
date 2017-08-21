@@ -8,6 +8,7 @@
               <p>ユーザー名：<%= link_to user.name, user %></p>
               <p><%= profile_img(user) %></p>
               <p>Eメール：<%= user.email %></p>
+              <p><%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%></p>
             </div>
             <%= render partial: 'follow_form', locals: { user: user } if signed_in?   %>
           </li>
