@@ -4,7 +4,7 @@
     <tr class="info"><th>ユーザー名</th><th>ユーザー画像</th><th>Eメール</th><th>メッセージ</th><th>フォロー状態</th></tr>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.name %></td>
+        <td><%= link_to user.name, user %></td>
         <td><%= profile_img(user) %></td>
         <td><%= user.email %></td>
         <td><%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%></td>
